@@ -344,7 +344,7 @@ function vowelCounter(txt) {
     return totalVowels.length;
 }
 
-console.log(`VowelCounter is :  ${vowelCounter('murcielagos')}`);
+console.log(`the VowelCounter is :  ${vowelCounter('murcielagos')}`);
 
 
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
