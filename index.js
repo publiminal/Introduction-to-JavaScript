@@ -316,12 +316,12 @@ Using the grade function below do the following:
 
 function grade(score){
   if(score >=90 && score <= 100 ){ return 'you got an A'; }
-  else if (score >=80 && score <=89 ){ return 'you got an B'; }
-  else if (score >=70 && score <=79 ){ return 'you got an C'; }
-  else if (score >=60 && score <=69 ){ return 'you got an D'; }
+  else if (score >=80 && score <90 ){ return 'you got a B'; }
+  else if (score >=70 && score <80 ){ return 'you got a C'; }
+  else if (score >=60 && score <70 ){ return 'you got a D'; }
   else if(score <60){ return 'you got an F'; }
 }
-console.log(grade(20));
+console.log(grade(85));
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
@@ -336,10 +336,19 @@ HINT - try looking up the .includes() method
 */
 
 
-function vowelCounter(/*add your code here*/) {
-  /*add your code here*/
+function vowelCounter(txt) {
+    const vowels = ['a', 'e', 'i','o','u'];
+    const totalVowels = 0;
+    const word = txt.split('');
+    console.log(word);
+    for(let i; i<word.length;i++){
+      console.log( vowels.forEach(vowel => word.includes(vowel)) );
+      totalVowels = vowels.forEach(vowel => word.includes(vowel))  ? totalVowels++ : totalVowels;
+    }
+    return totalVowels
 }
 
+console.log(vowelCounter('pio'));
 
 
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
