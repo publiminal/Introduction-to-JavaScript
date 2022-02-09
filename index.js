@@ -337,18 +337,14 @@ HINT - try looking up the .includes() method
 
 
 function vowelCounter(txt) {
-    const vowels = ['a', 'e', 'i','o','u'];
-    const totalVowels = 0;
+    const vowels = ['a', 'e', 'i','o','u']; 
     const word = txt.split('');
-    console.log(word);
-    for(let i; i<word.length;i++){
-      console.log( vowels.forEach(vowel => word.includes(vowel)) );
-      totalVowels = vowels.forEach(vowel => word.includes(vowel))  ? totalVowels++ : totalVowels;
-    }
-    return totalVowels
+    let totalVowels = vowels.filter(vowel => word.includes(vowel));
+    //console.log(`totalVowels is ${totalVowels}`);
+    return totalVowels.length;
 }
 
-console.log(vowelCounter('pio'));
+console.log(`VowelCounter is ${vowelCounter('murcielago')}`);
 
 
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
