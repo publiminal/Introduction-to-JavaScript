@@ -19,7 +19,10 @@ Do the following:
 
    HINT: no function required
 */
-
+const votingAge = 18;
+if(votingAge >= 18){
+  console.log(true);
+}
 
 
 /*
@@ -34,8 +37,12 @@ Do the following:
    HINT: no function required
 */
 
-
-
+const firstThing = 1;
+const secondThing = 2;
+if(firstThing === secondThing){
+  firstThing = 2;
+}
+console.log(firstThing);
 
 
 /*
@@ -48,8 +55,9 @@ Do the following:
 
    HINT: look up the Number method
 */
-
-
+let myString = "1999";
+myString = Number.toString(myString)
+console.log(myString);
 
 
 /*
@@ -61,8 +69,8 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a,b){
+  return a*b;
 }
 
 
@@ -77,8 +85,8 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(age){
+  return age * 7;
 }
 
 
@@ -127,11 +135,45 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
       
         Notice the expected and received, expected is what the test is looking for, and received is what was actually returned from this function. You can also see it's passing in two values, the number 4 and the number 1. 
         So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
-*/  
+*/ 
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+// weight in pounds, age value in years 
+function hungryDog(weight, age){
+  // update age to decimals if is a puppy
+  const isPuppy = age < 1;
+  console.log(`isPuppy : ${isPuppy}`);  
+  //age = isPuppy ? age/12 : age;
+  console.log(`age is ${age}`);
+  // store final daily dog food to return 
+  let dailyRayFood = 0;
+
+  // handle dogs
+  if(!isPuppy){
+      // less than or equal to 5
+      dailyRayFood = weight < 5 ? (5*weight)/100 : dailyRayFood;
+      // up to 5 lbs - 5% of their body weight
+      dailyRayFood = weight >= 5 ? (5*weight)/100 : dailyRayFood;
+      //6 - 10 lbs - 4% of their body weight 
+      dailyRayFood = weight > 5 && weight <= 10 ? (4*weight)/100 : dailyRayFood;
+      //11 - 15 lbs - 3% of their body weight
+      dailyRayFood = weight >= 11 && weight <= 15 ? (3*weight)/100 : dailyRayFood;
+      // > 15lbs - 2% of their body weight
+      dailyRayFood = weight > 15  ? (2*weight)/100 : dailyRayFood;
+    }else if(isPuppy){
+      const _age = Math.fround(age)*12; // updated to months.
+      console.log(`puppy is ${Math.fround(age)*12}`);
+      //2 - 4 months 10% of their body weight
+      dailyRayFood = _age >= 2 && _age <= 4 ? (10*weight)/100 : dailyRayFood;
+      //4 - 7 months 5% of their body weight 
+      dailyRayFood = _age >= 4 && _age <= 7  ? (5*weight)/100 : dailyRayFood;
+      //7 - 12 months 4% of their body weight
+      dailyRayFood = _age >= 7 && _age <= 12  ? (4*weight)/100 : dailyRayFood;
+      dailyRayFood = _age > 7 ? (4*weight)/100 : dailyRayFood;
+    }
+      return dailyRayFood;
+  
 }
+console.log(`dailyRayFood is :: ${hungryDog(4, 0.583)} `);
 
 
 
@@ -155,12 +197,49 @@ Use the game function below to do the following:
 
 RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors | Or there's a tie
 */
-
-function game(user, computer){
-  /*add your code here*/
+function computerChoice(){
+  // computer choice
+  const rand = Math.floor(Math.random()*3);
+  let computerChoice = '';
+  if(rand === 1){computerChoice = 'rock'}else if(rand === 2){computerChoice = 'paper'}else if(rand === 3){computerChoice = 'scissors'}
+  //console.log(`computerChoice is ${computerChoice}`); 
+  return computerChoice;
 }
 
 
+function game(user, computer){
+  console.log(`userChoice is ${user} , computerChoice is ${computer}`);
+  if(user === computer){ 
+    return  `it's a tie`
+ }
+
+ if(user === 'rock' ){
+   if(computer === 'paper'){
+      return "you lose!"
+     }else{
+       return "you win!"
+     }
+ }
+ if(user === 'paper'){
+     if(computer === 'scissors' ){
+         return "you lose!"
+     }else if(computer === 'rock'){
+         return "you win!"
+     } 
+   }
+     
+ if(user === 'scissors'){
+   if(computer === 'rock'){
+     return "you lose!"
+   }else if (computer === 'paper'){
+     return "you win!"
+   }
+ }  
+
+}
+
+const compChoice = computerChoice();
+console.log(game('rock', compChoice));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -169,14 +248,17 @@ function game(user, computer){
 /*
 Using the miles function below do the following:
 1. Receive a number of kilometers
-2. Convert the number of kiolmeters received to miles
+2. Convert the number of kilometers received to miles
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(num){
+  const miles = num * 0.621371; 
+  console.log(`miles is ${miles}`)
+  return miles;
 }
 
+console.log(miles(10));
 
 
 //Task 5b - Feet to CM
@@ -187,10 +269,11 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm){
+  return cm / 30.48;
 }
 
+console.log(feet(160));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
