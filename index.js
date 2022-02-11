@@ -160,20 +160,21 @@ function hungryDog(weight, age){
       // > 15lbs - 2% of their body weight
       dailyRayFood = weight > 15  ? (2*weight)/100 : dailyRayFood;
     }else if(isPuppy){
-      const _age = Math.fround(age)*12; // updated to months.
-      console.log(`puppy is ${Math.fround(age)*12}`);
+      const _age = age*12 //Math.(age*12); //Math.fround(age)*12; // updated to months.
+      //console.log(`puppy is ${Math.ceil(age)*12}`);
       //2 - 4 months 10% of their body weight
       dailyRayFood = _age >= 2 && _age <= 4 ? (10*weight)/100 : dailyRayFood;
       //4 - 7 months 5% of their body weight 
-      dailyRayFood = _age >= 4 && _age <= 7  ? (5*weight)/100 : dailyRayFood;
+      dailyRayFood = _age >= 4 && _age < 7  ? (5*weight)/100 : dailyRayFood;
       //7 - 12 months 4% of their body weight
-      dailyRayFood = _age >= 7 && _age <= 12  ? (4*weight)/100 : dailyRayFood;
-      dailyRayFood = _age > 7 ? (3*weight)/100 : dailyRayFood;
+      console.log(`age is ------`, _age);
+      dailyRayFood = _age >= 6.9 && _age <= 12  ? (4*weight)/100 : dailyRayFood;
+      //dailyRayFood = _age > 7 ? (3*weight)/100 : dailyRayFood;
     }
       return dailyRayFood;
   
 }
-console.log(`dailyRayFood is :: ${hungryDog(4, 0.583)} `);
+console.log(`dailyRayFood is :: ${hungryDog(4, .583)} `);
 
 
 
